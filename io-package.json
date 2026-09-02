@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "news": {
+      "0.1.3": {
+        "en": "remaining adapter checker fixes",
+        "de": "Weitere Adapter-Checker Fixes",
+        "ru": "оставшиеся исправления программы проверки адаптеров",
+        "pt": "correções restantes",
+        "nl": "resterende oplossingen voor het controleren van de adapter",
+        "fr": "correctifs d'adaptateurs restants",
+        "it": "correzioni rimanenti",
+        "es": "resto de correcciones de adaptadores",
+        "pl": "pozostałe poprawki sprawdzania adaptera",
+        "uk": "Решта виправлення перевірки адаптера",
+        "zh-cn": "剩余的适配器检查器修复程序"
+      },
       "0.1.2": {
         "en": "adapter checker fixes",
         "de": "Adapter-Checker Fixes",
