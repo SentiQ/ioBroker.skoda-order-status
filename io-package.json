@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "news": {
+      "0.1.6": {
+        "en": "fix fr news translation",
+        "de": "Fix für News-Übersetzung",
+        "ru": "исправлено при переводе новостей",
+        "pt": "fix for news translation",
+        "nl": "oplossing voor het vertalen van nieuws",
+        "fr": "fix fr news translation",
+        "it": "fix for news tradurre",
+        "es": "fix fr news translation",
+        "pl": "fix fr tłumaczenie wiadomości",
+        "uk": "виправити переклад новин fr",
+        "zh-cn": "修复新闻翻译问题"
+      },
       "0.1.5": {
         "en": "fix state roles and connection i18n",
         "de": "Fix State Roles und Verbindung i18n",
