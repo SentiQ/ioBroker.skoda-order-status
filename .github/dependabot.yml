@@ -3,11 +3,10 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: monthly
-      day: 24
-      time: "00:05"
+      interval: cron
+      cronjob: "17 3 19 * *"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 15
     assignees:
       - SentiQ
     versioning-strategy: increase
@@ -21,10 +20,9 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: monthly
-      day: 24
-      time: "00:05"
+      interval: cron
+      cronjob: "41 4 19 * *"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 15
     assignees:
       - SentiQ

@@ -157,7 +157,7 @@ class SkodaOrderStatus extends utils.Adapter {
       }
     });
     const states = [
-      { id: "orderStatus", name: "Order status", type: "string", role: "value", val: mapped.orderStatus },
+      { id: "orderStatus", name: "Order status", type: "string", role: "text", val: mapped.orderStatus },
       {
         id: "orderStatusLabel",
         name: "Order status label",
@@ -191,7 +191,7 @@ class SkodaOrderStatus extends utils.Adapter {
         id: "activationState",
         name: "Activation state",
         type: "string",
-        role: "value",
+        role: "text",
         val: mapped.activationState
       },
       {
