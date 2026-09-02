@@ -85,6 +85,8 @@ This adapter uses an **unofficial, reverse-engineered** MyŠkoda API. It is not 
 ### 0.1.0 (2026-09-02)
 * (SentiQ) initial release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
