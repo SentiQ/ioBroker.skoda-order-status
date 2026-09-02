@@ -1,6 +1,6 @@
 {
   "name": "iobroker.skoda-order-status",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Periodically check the order status of your Škoda",
   "author": {
     "name": "SentiQ",

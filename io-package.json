@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "added npm deployment",
+        "de": "NPM-Einsatz hinzugefügt",
+        "ru": "добавлено развертывание npm",
+        "pt": "adição de npm",
+        "nl": "npm-implementatie toegevoegd",
+        "fr": "déploiement NPM ajouté",
+        "it": "aggiunto uso npm",
+        "es": "añadió npm deployment",
+        "pl": "dodano wdrożenie npm",
+        "uk": "додано npm розгортання",
+        "zh-cn": "添加了 npm 部署"
+      },
       "0.1.0": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
