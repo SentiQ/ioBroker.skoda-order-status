@@ -164,7 +164,16 @@
         "role": "indicator.connected",
         "name": {
           "en": "Device or service connected",
-          "de": "Gerät oder Dienst verbunden"
+          "de": "Gerät oder Dienst verbunden",
+          "ru": "Устройство или служба подключены",
+          "pt": "Dispositivo ou serviço conectado",
+          "nl": "Apparaat of dienst verbonden",
+          "fr": "Appareil ou service connecté",
+          "it": "Dispositivo o servizio connesso",
+          "es": "Dispositivo o servicio conectado",
+          "pl": "Urządzenie lub usługa połączona",
+          "uk": "Пристрій або служба підключена",
+          "zh-cn": "设备或服务已连接"
         },
         "type": "boolean",
         "read": true,

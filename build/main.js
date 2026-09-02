@@ -27,6 +27,19 @@ var import_errors = require("./lib/errors");
 var import_myskoda_api = require("./lib/myskoda-api");
 var import_myskoda_auth = require("./lib/myskoda-auth");
 var import_order_mapper = require("./lib/order-mapper");
+const CONNECTION_NAME = {
+  en: "Device or service connected",
+  de: "Ger\xE4t oder Dienst verbunden",
+  ru: "\u0423\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u043E \u0438\u043B\u0438 \u0441\u043B\u0443\u0436\u0431\u0430 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u044B",
+  pt: "Dispositivo ou servi\xE7o conectado",
+  nl: "Apparaat of dienst verbonden",
+  fr: "Appareil ou service connect\xE9",
+  it: "Dispositivo o servizio connesso",
+  es: "Dispositivo o servicio conectado",
+  pl: "Urz\u0105dzenie lub us\u0142uga po\u0142\u0105czona",
+  uk: "\u041F\u0440\u0438\u0441\u0442\u0440\u0456\u0439 \u0430\u0431\u043E \u0441\u043B\u0443\u0436\u0431\u0430 \u043F\u0456\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0430",
+  "zh-cn": "\u8BBE\u5907\u6216\u670D\u52A1\u5DF2\u8FDE\u63A5"
+};
 class SkodaOrderStatus extends utils.Adapter {
   pollTimer;
   auth;
@@ -42,6 +55,15 @@ class SkodaOrderStatus extends utils.Adapter {
     this.on("unload", this.onUnload.bind(this));
   }
   async onReady() {
+    await this.extendObjectAsync("info.connection", {
+      common: {
+        name: CONNECTION_NAME,
+        type: "boolean",
+        role: "indicator.connected",
+        read: true,
+        write: false
+      }
+    });
     const username = (this.config.username || "").trim();
     const password = this.config.password || "";
     const pollInterval = (0, import_const.clampPollInterval)(this.config.pollInterval);
@@ -240,18 +262,20 @@ class SkodaOrderStatus extends utils.Adapter {
     ];
     for (const state of states) {
       const id = `${deviceId}.${state.id}`;
+      const common = {
+        name: state.name,
+        type: state.type,
+        role: state.role,
+        read: true,
+        write: false,
+        ...state.unit ? { unit: state.unit } : {}
+      };
       await this.setObjectNotExistsAsync(id, {
         type: "state",
-        common: {
-          name: state.name,
-          type: state.type,
-          role: state.role,
-          read: true,
-          write: false,
-          unit: state.unit
-        },
+        common,
         native: {}
       });
+      await this.extendObjectAsync(id, { common });
       await this.setState(id, { val: state.val, ack: true });
     }
   }

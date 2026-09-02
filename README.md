@@ -61,6 +61,9 @@ This adapter uses an **unofficial, reverse-engineered** MyŠkoda API. It is not 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (SentiQ) fix state roles and connection i18n
+
 ### 0.1.4 (2026-09-02)
 * (SentiQ) repository PR checker warnings
 

@@ -18,6 +18,20 @@ interface StateDef {
     val: ioBroker.StateValue;
 }
 
+const CONNECTION_NAME = {
+    en: 'Device or service connected',
+    de: 'Gerät oder Dienst verbunden',
+    ru: 'Устройство или служба подключены',
+    pt: 'Dispositivo ou serviço conectado',
+    nl: 'Apparaat of dienst verbonden',
+    fr: 'Appareil ou service connecté',
+    it: 'Dispositivo o servizio connesso',
+    es: 'Dispositivo o servicio conectado',
+    pl: 'Urządzenie lub usługa połączona',
+    uk: 'Пристрій або служба підключена',
+    'zh-cn': '设备或服务已连接',
+};
+
 class SkodaOrderStatus extends utils.Adapter {
     private pollTimer: ioBroker.Interval | undefined;
     private auth: MySkodaAuth | undefined;
@@ -35,6 +49,16 @@ class SkodaOrderStatus extends utils.Adapter {
     }
 
     private async onReady(): Promise<void> {
+        await this.extendObjectAsync('info.connection', {
+            common: {
+                name: CONNECTION_NAME,
+                type: 'boolean',
+                role: 'indicator.connected',
+                read: true,
+                write: false,
+            },
+        });
+
         const username = (this.config.username || '').trim();
         const password = this.config.password || '';
         const pollInterval = clampPollInterval(this.config.pollInterval);
@@ -249,18 +273,20 @@ class SkodaOrderStatus extends utils.Adapter {
 
         for (const state of states) {
             const id = `${deviceId}.${state.id}`;
+            const common: ioBroker.StateCommon = {
+                name: state.name,
+                type: state.type,
+                role: state.role,
+                read: true,
+                write: false,
+                ...(state.unit ? { unit: state.unit } : {}),
+            };
             await this.setObjectNotExistsAsync(id, {
                 type: 'state',
-                common: {
-                    name: state.name,
-                    type: state.type,
-                    role: state.role,
-                    read: true,
-                    write: false,
-                    unit: state.unit,
-                },
+                common,
                 native: {},
             });
+            await this.extendObjectAsync(id, { common });
             await this.setState(id, { val: state.val, ack: true });
         }
     }
