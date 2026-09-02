@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "adapter checker fixes",
+        "de": "Adapter-Checker Fixes",
+        "ru": "исправления для проверки адаптеров",
+        "pt": "Adapter Checker fixes",
+        "nl": "Correcties voor het controleren van de adapter",
+        "fr": "adapter checker fixes",
+        "it": "adapter checker fix",
+        "es": "Adapter Checker corrige",
+        "pl": "poprawki sprawdzania adaptera",
+        "uk": "виправлення перевірки адаптера",
+        "zh-cn": "适配器检查器修复"
+      },
       "0.1.1": {
         "en": "added npm deployment",
         "de": "NPM-Einsatz hinzugefügt",
