@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "news": {
+      "0.1.5": {
+        "en": "fix state roles and connection i18n",
+        "de": "Fix State Roles und Verbindung i18n",
+        "ru": "исправить роли состояния и подключение i18n",
+        "pt": "fixar funções de estado e conexão i18n",
+        "nl": "statusrollen en verbinding i18n repareren",
+        "fr": "fix state roles and connection i18n",
+        "it": "ruoli fissi e connessione i18n",
+        "es": "arreglar roles de estado y conexión i18n",
+        "pl": "popraw role stanu i połączenie i18n",
+        "uk": "виправлення ролей стану та підключення i18n",
+        "zh-cn": "修复状态角色和连接 i18n"
+      },
       "0.1.4": {
         "en": "repository PR checker warnings",
         "de": "PR-Checker-Warnungen",
