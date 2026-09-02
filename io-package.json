@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "news": {
+      "0.1.4": {
+        "en": "repository PR checker warnings",
+        "de": "PR-Checker-Warnungen",
+        "ru": "предупреждения PR-чекера репозитория",
+        "pt": "avisos do repository PR checker",
+        "nl": "Waarschuwingen voor de PR-checker van de repository",
+        "fr": "dépôt PR Checker Warnings",
+        "it": "avvisi PR Checker",
+        "es": "repositorio avisos de PR Checker",
+        "pl": "ostrzeżenia dotyczące sprawdzania PR w repozytorium",
+        "uk": "попередження про перевірку PR репозиторію",
+        "zh-cn": "存储库 PR 检查器警告"
+      },
       "0.1.3": {
         "en": "remaining adapter checker fixes",
         "de": "Weitere Adapter-Checker Fixes",
