@@ -1,0 +1,41 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "username": {
+            "type": "text",
+            "label": "MyŠkoda email",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "password": {
+            "type": "password",
+            "repeat": false,
+            "visible": true,
+            "label": "Password",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "pollInterval": {
+            "type": "number",
+            "label": "Poll interval (seconds)",
+            "help": "Minimum 900, maximum 86400. Default 3600.",
+            "min": 900,
+            "max": 86400,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/lib/errors.ts"],
+  "sourcesContent": ["export class SkodaOrderApiError extends Error {\n    constructor(message: string) {\n        super(message);\n        this.name = 'SkodaOrderApiError';\n    }\n}\n\nexport class SkodaOrderAuthError extends SkodaOrderApiError {\n    constructor(message: string) {\n        super(message);\n        this.name = 'SkodaOrderAuthError';\n    }\n}\n\nexport class TermsAndConditionsError extends SkodaOrderAuthError {\n    constructor(location: string) {\n        super(`Terms and conditions must be accepted in the MySkoda app: ${location}`);\n        this.name = 'TermsAndConditionsError';\n    }\n}\n\nexport class MarketingConsentError extends SkodaOrderAuthError {\n    constructor(location: string) {\n        super(`Marketing consent must be accepted in the MySkoda app: ${location}`);\n        this.name = 'MarketingConsentError';\n    }\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,MAAM,2BAA2B,MAAM;AAAA,EAC1C,YAAY,SAAiB;AACzB,UAAM,OAAO;AACb,SAAK,OAAO;AAAA,EAChB;AACJ;AAEO,MAAM,4BAA4B,mBAAmB;AAAA,EACxD,YAAY,SAAiB;AACzB,UAAM,OAAO;AACb,SAAK,OAAO;AAAA,EAChB;AACJ;AAEO,MAAM,gCAAgC,oBAAoB;AAAA,EAC7D,YAAY,UAAkB;AAC1B,UAAM,6DAA6D,QAAQ,EAAE;AAC7E,SAAK,OAAO;AAAA,EAChB;AACJ;AAEO,MAAM,8BAA8B,oBAAoB;AAAA,EAC3D,YAAY,UAAkB;AAC1B,UAAM,0DAA0D,QAAQ,EAAE;AAC1E,SAAK,OAAO;AAAA,EAChB;AACJ;",
+  "names": []
+}

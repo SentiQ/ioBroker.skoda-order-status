@@ -1,0 +1,125 @@
+{
+    "common": {
+        "name": "skoda-order-status",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "Škoda Order Status",
+            "de": "Škoda-Bestellstatus",
+            "ru": "Статус заказа Шкода",
+            "pt": "Estado da encomenda Škoda",
+            "nl": "Škoda-bestelstatus",
+            "fr": "Statut de la commande Škoda",
+            "it": "Stato dell'ordine Škoda",
+            "es": "Estado del pedido de Škoda",
+            "pl": "Status zamówienia Skody",
+            "uk": "Статус замовлення Škoda",
+            "zh-cn": "斯柯达订单状态"
+        },
+        "desc": {
+            "en": "Periodically check the order status of your Škoda",
+            "de": "Überprüfen Sie regelmäßig den Bestellstatus Ihres Škoda",
+            "ru": "Периодически проверяйте статус заказа вашей Škoda.",
+            "pt": "Verifique periodicamente o status do pedido do seu Škoda",
+            "nl": "Controleer regelmatig de bestelstatus van uw Škoda",
+            "fr": "Vérifiez périodiquement l'état de la commande de votre Škoda",
+            "it": "Controlla periodicamente lo stato dell'ordine della tua Škoda",
+            "es": "Consulta periódicamente el estado del pedido de tu Škoda",
+            "pl": "Okresowo sprawdzaj status zamówienia swojej Škody",
+            "uk": "Періодично перевіряйте статус замовлення вашої Škoda",
+            "zh-cn": "定期检查您的斯柯达的订单状态"
+        },
+        "authors": [
+            "SentiQ <yves@nuesser.digital>"
+        ],
+        "keywords": [
+            "iobroker",
+            "skoda",
+            "Smart Home"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "skoda-order-status.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/SentiQ/ioBroker.skoda-order-status/main/admin/skoda-order-status.png",
+        "readme": "https://github.com/SentiQ/ioBroker.skoda-order-status/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "vehicle",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.0.23"
+            }
+        ]
+    },
+    "native": {
+        "username": "",
+        "password": "",
+        "pollInterval": 3600,
+        "refreshToken": ""
+    },
+    "encryptedNative": [
+        "password",
+        "refreshToken"
+    ],
+    "protectedNative": [
+        "password",
+        "refreshToken"
+    ],
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": {
+                    "en": "Device or service connected",
+                    "de": "Gerät oder Dienst verbunden"
+                },
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "skoda-order-status adapter settings": "Adapter settings for skoda-order-status",
+    "MyŠkoda email": "MyŠkoda email",
+    "Password": "Password",
+    "Poll interval (seconds)": "Poll interval (seconds)",
+    "Minimum 900, maximum 86400. Default 3600.": "Minimum 900, maximum 86400. Default 3600."
+}
