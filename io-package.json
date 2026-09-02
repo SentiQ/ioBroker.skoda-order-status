@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "news": {
+      "0.1.7": {
+        "en": "repository PR checker error",
+        "de": "PR-Checker-Fehler",
+        "ru": "ошибка PR-чекера репозитория",
+        "pt": "erro no repositório PR checker",
+        "nl": "Fout bij de PR-controle van de repository",
+        "fr": "erreur PR Checker du dépôt",
+        "it": "errore PR Checker Repository",
+        "es": "error en el repositorio PR Checker",
+        "pl": "Błąd sprawdzania PR w repozytorium",
+        "uk": "помилка перевірки PR репозиторію",
+        "zh-cn": "存储库 PR 检查器错误"
+      },
       "0.1.6": {
         "en": "fix fr news translation",
         "de": "Fix für News-Übersetzung",
@@ -80,19 +93,6 @@
         "pl": "dodano wdrożenie npm",
         "uk": "додано npm розгортання",
         "zh-cn": "添加了 npm 部署"
-      },
-      "0.1.0": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
       }
     },
     "titleLang": {
