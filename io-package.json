@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "news": {
+      "0.1.8": {
+        "en": "Adapter requires admin >= 7.8.23 now.",
+        "de": "Adapter benötigt jetzt admin >= 7.8.23.",
+        "ru": "Теперь для адаптера требуется администратор >= 7.8.23.",
+        "pt": "Agora o adaptador exige admin >= 7.8.23.",
+        "nl": "Voor de adapter is nu admin >= 7.8.23 vereist.",
+        "fr": "Adapter nécessite admin >= 7.8.23.",
+        "it": "Adapter richiede admin >= 7.8.23 ora.",
+        "es": "El adaptador ahora necesita admin >= 7.8.23",
+        "pl": "Adapter wymaga teraz administratora >= 7.8.23.",
+        "uk": "Адаптер вимагає адміністратора >= 7.8.23 зараз.",
+        "zh-cn": "适配器现在需要管理员 >= 7.8.23。"
+      },
       "0.1.7": {
         "en": "repository PR checker error",
         "de": "PR-Checker-Fehler",
@@ -80,19 +93,6 @@
         "pl": "poprawki sprawdzania adaptera",
         "uk": "виправлення перевірки адаптера",
         "zh-cn": "适配器检查器修复"
-      },
-      "0.1.1": {
-        "en": "added npm deployment",
-        "de": "NPM-Einsatz hinzugefügt",
-        "ru": "добавлено развертывание npm",
-        "pt": "adição de npm",
-        "nl": "npm-implementatie toegevoegd",
-        "fr": "déploiement NPM ajouté",
-        "it": "aggiunto uso npm",
-        "es": "añadió npm deployment",
-        "pl": "dodano wdrożenie npm",
-        "uk": "додано npm розгортання",
-        "zh-cn": "添加了 npm 部署"
       }
     },
     "titleLang": {

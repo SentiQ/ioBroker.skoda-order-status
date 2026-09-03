@@ -61,8 +61,7 @@ This adapter uses an **unofficial, reverse-engineered** MyŠkoda API. It is not 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.1.8 (2026-09-03)
 - (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
 
 ### 0.1.7 (2026-09-02)
@@ -76,18 +75,6 @@ This adapter uses an **unofficial, reverse-engineered** MyŠkoda API. It is not 
 
 ### 0.1.4 (2026-09-02)
 * (SentiQ) repository PR checker warnings
-
-### 0.1.3 (2026-09-02)
-* (SentiQ) remaining adapter checker fixes
-
-### 0.1.2 (2026-09-02)
-* (SentiQ) adapter checker fixes
-
-### 0.1.1 (2026-09-02)
-* (SentiQ) added npm deployment
-
-### 0.1.0 (2026-09-02)
-* (SentiQ) initial release
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
