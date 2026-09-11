@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "skoda-order-status",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "news": {
+      "0.1.9": {
+        "en": "HTTP timeouts, sequential polling, English state labels",
+        "de": "HTTP-Timeouts, Sequenzabfragen, englische Bundesländer",
+        "ru": "Тайм-ауты HTTP, последовательный опрос, надписи состояний на английском языке",
+        "pt": "Tempo limite HTTP, pesquisa sequencial, rótulos em inglês",
+        "nl": "HTTP-time-outs, sequentiële peilingen, Engelse staatslabels",
+        "fr": "Délais HTTP, sondage séquentiel, libellés d'État en anglais",
+        "it": "Timeout HTTP, sondaggi sequenziali, etichette inglesi",
+        "es": "tiempos de espera HTTP, sondeo secuencial, etiquetas en inglés",
+        "pl": "Limity czasu HTTP, sondaże sekwencyjne, angielskie etykiety stanowe",
+        "uk": "Таймаути HTTP, послідовне опитування, англійські державні мітки",
+        "zh-cn": "HTTP 超时、顺序轮询、英语状态标签"
+      },
       "0.1.8": {
         "en": "Adapter requires admin >= 7.8.23 now.",
         "de": "Adapter benötigt jetzt admin >= 7.8.23.",
@@ -80,19 +93,6 @@
         "pl": "pozostałe poprawki sprawdzania adaptera",
         "uk": "Решта виправлення перевірки адаптера",
         "zh-cn": "剩余的适配器检查器修复程序"
-      },
-      "0.1.2": {
-        "en": "adapter checker fixes",
-        "de": "Adapter-Checker Fixes",
-        "ru": "исправления для проверки адаптеров",
-        "pt": "Adapter Checker fixes",
-        "nl": "Correcties voor het controleren van de adapter",
-        "fr": "corrections du vérificateur d'adaptateur",
-        "it": "adapter checker fix",
-        "es": "Adapter Checker corrige",
-        "pl": "poprawki sprawdzania adaptera",
-        "uk": "виправлення перевірки адаптера",
-        "zh-cn": "适配器检查器修复"
       }
     },
     "titleLang": {
