@@ -8,16 +8,13 @@ export async function fetchWithTimeout<TResponse>(
     init: Record<string, unknown> = {},
     timeoutMs = HTTP_TIMEOUT_MS,
 ): Promise<TResponse> {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-        return await fetchFn(url, { ...init, signal: controller.signal });
+        return await fetchFn(url, { ...init, signal: AbortSignal.timeout(timeoutMs) });
     } catch (error) {
-        if ((error as Error).name === 'AbortError') {
+        const name = (error as Error).name;
+        if (name === 'AbortError' || name === 'TimeoutError') {
             throw new Error(`Request timed out after ${timeoutMs} ms`);
         }
         throw error;
-    } finally {
-        clearTimeout(timer);
     }
 }

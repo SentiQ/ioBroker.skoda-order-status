@@ -23,17 +23,14 @@ __export(http_exports, {
 module.exports = __toCommonJS(http_exports);
 var import_const = require("./const");
 async function fetchWithTimeout(fetchFn, url, init = {}, timeoutMs = import_const.HTTP_TIMEOUT_MS) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    return await fetchFn(url, { ...init, signal: controller.signal });
+    return await fetchFn(url, { ...init, signal: AbortSignal.timeout(timeoutMs) });
   } catch (error) {
-    if (error.name === "AbortError") {
+    const name = error.name;
+    if (name === "AbortError" || name === "TimeoutError") {
       throw new Error(`Request timed out after ${timeoutMs} ms`);
     }
     throw error;
-  } finally {
-    clearTimeout(timer);
   }
 }
 // Annotate the CommonJS export names for ESM import in node:
