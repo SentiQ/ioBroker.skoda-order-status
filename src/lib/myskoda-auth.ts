@@ -14,6 +14,7 @@ import {
 } from './const';
 import { parseCsrfState } from './csrf';
 import { MarketingConsentError, SkodaOrderAuthError, TermsAndConditionsError } from './errors';
+import { fetchWithTimeout } from './http';
 
 export interface IdkSession {
     accessToken: string;
@@ -98,7 +99,11 @@ export class MySkodaAuth {
 
     public constructor() {
         this.jar = new CookieJar();
-        this.fetchFn = fetchCookie(nodeFetch, this.jar);
+        const cookieFetch = fetchCookie(nodeFetch, this.jar);
+        this.fetchFn = (input, init) =>
+            fetchWithTimeout(cookieFetch as FetchLike, String(input), init as Record<string, unknown>).catch(error => {
+                throw error instanceof SkodaOrderAuthError ? error : new SkodaOrderAuthError((error as Error).message);
+            });
     }
 
     public getRefreshToken(): string | undefined {

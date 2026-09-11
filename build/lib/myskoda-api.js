@@ -23,6 +23,7 @@ __export(myskoda_api_exports, {
 module.exports = __toCommonJS(myskoda_api_exports);
 var import_const = require("./const");
 var import_errors = require("./errors");
+var import_http = require("./http");
 class MySkodaApi {
   constructor(auth) {
     this.auth = auth;
@@ -36,14 +37,23 @@ class MySkodaApi {
   }
   async getJson(path) {
     const token = await this.auth.getAccessToken();
-    const response = await fetch(`${import_const.BASE_URL_SKODA}/api${path}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-        accept: "application/json",
-        "user-agent": import_const.USER_AGENT
-      }
-    });
+    let response;
+    try {
+      response = await (0, import_http.fetchWithTimeout)(
+        (url, init) => fetch(url, init),
+        `${import_const.BASE_URL_SKODA}/api${path}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+            accept: "application/json",
+            "user-agent": import_const.USER_AGENT
+          }
+        }
+      );
+    } catch (error) {
+      throw new import_errors.SkodaOrderApiError(`Request to ${path} failed: ${error.message}`);
+    }
     const text = await response.text();
     if (!response.ok) {
       throw new import_errors.SkodaOrderApiError(`Request to ${path} failed with status ${response.status}`);

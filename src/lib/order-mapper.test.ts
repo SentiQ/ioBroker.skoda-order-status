@@ -25,11 +25,11 @@ const SAMPLE_ORDER: OrderDetails = {
 };
 
 describe('statusLabel', () => {
-    it('returns German labels for known statuses', () => {
-        expect(statusLabel('ORDER_CONFIRMED')).to.equal('Bestätigt');
-        expect(statusLabel('IN_PRODUCTION')).to.equal('In Produktion');
-        expect(statusLabel('IN_DELIVERY')).to.equal('Unterwegs');
-        expect(statusLabel('TO_HANDOVER')).to.equal('Zur Übergabe');
+    it('returns English labels for known statuses', () => {
+        expect(statusLabel('ORDER_CONFIRMED')).to.equal('Confirmed');
+        expect(statusLabel('IN_PRODUCTION')).to.equal('In production');
+        expect(statusLabel('IN_DELIVERY')).to.equal('In delivery');
+        expect(statusLabel('TO_HANDOVER')).to.equal('To handover');
     });
 
     it('returns the raw status when unknown', () => {
@@ -71,7 +71,7 @@ describe('mapOrder', () => {
         const mapped = mapOrder(SAMPLE_ORDER);
         expect(mapped.deviceName).to.equal('Elroq');
         expect(mapped.orderStatus).to.equal('IN_PRODUCTION');
-        expect(mapped.orderStatusLabel).to.equal('In Produktion');
+        expect(mapped.orderStatusLabel).to.equal('In production');
         expect(mapped.batteryKwh).to.equal(63);
         expect(mapped.maxPerformanceKw).to.equal(150);
         expect(mapped.dealerId).to.equal('DE123');
@@ -80,7 +80,7 @@ describe('mapOrder', () => {
         expect(mapped.inDeliveryDate).to.equal(null);
         expect(mapped.checkpointsReached).to.have.length(2);
         expect(mapped.checkpointsPending).to.have.length(2);
-        expect(mapped.checkpointsPending[0].label).to.equal('Unterwegs');
+        expect(mapped.checkpointsPending[0].label).to.equal('In delivery');
     });
 });
 

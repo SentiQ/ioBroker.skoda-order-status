@@ -33,7 +33,8 @@ const CONNECTION_NAME = {
 };
 
 class SkodaOrderStatus extends utils.Adapter {
-    private pollTimer: ioBroker.Interval | undefined;
+    private pollTimer: ioBroker.Timeout | undefined;
+    private pollIntervalSec = 3600;
     private auth: MySkodaAuth | undefined;
     private api: MySkodaApi | undefined;
     private polling = false;
@@ -80,10 +81,9 @@ class SkodaOrderStatus extends utils.Adapter {
             return;
         }
 
+        this.pollIntervalSec = pollInterval;
         await this.poll();
-        this.pollTimer = this.setInterval(() => {
-            void this.poll();
-        }, pollInterval * 1000);
+        this.scheduleNextPoll();
         this.log.info(`Polling order status every ${pollInterval} seconds`);
     }
 
@@ -91,7 +91,7 @@ class SkodaOrderStatus extends utils.Adapter {
         this.unloaded = true;
         try {
             if (this.pollTimer) {
-                this.clearInterval(this.pollTimer);
+                this.clearTimeout(this.pollTimer);
                 this.pollTimer = undefined;
             }
         } catch (error) {
@@ -120,6 +120,16 @@ class SkodaOrderStatus extends utils.Adapter {
         await this.auth.authorize(username, password);
         this.log.info('Authenticated with MySkoda username and password');
         await this.persistRefreshToken();
+    }
+
+    private scheduleNextPoll(): void {
+        if (this.unloaded) {
+            return;
+        }
+        this.pollTimer = this.setTimeout(() => {
+            this.pollTimer = undefined;
+            void this.poll().finally(() => this.scheduleNextPoll());
+        }, this.pollIntervalSec * 1000);
     }
 
     private async poll(): Promise<void> {

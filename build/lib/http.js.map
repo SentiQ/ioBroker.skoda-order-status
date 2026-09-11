@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/lib/http.ts"],
+  "sourcesContent": ["import { HTTP_TIMEOUT_MS } from './const';\n\ntype FetchFn<TResponse> = (input: string, init?: Record<string, unknown>) => Promise<TResponse>;\n\nexport async function fetchWithTimeout<TResponse>(\n    fetchFn: FetchFn<TResponse>,\n    url: string,\n    init: Record<string, unknown> = {},\n    timeoutMs = HTTP_TIMEOUT_MS,\n): Promise<TResponse> {\n    const controller = new AbortController();\n    const timer = setTimeout(() => controller.abort(), timeoutMs);\n    try {\n        return await fetchFn(url, { ...init, signal: controller.signal });\n    } catch (error) {\n        if ((error as Error).name === 'AbortError') {\n            throw new Error(`Request timed out after ${timeoutMs} ms`);\n        }\n        throw error;\n    } finally {\n        clearTimeout(timer);\n    }\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAAgC;AAIhC,eAAsB,iBAClB,SACA,KACA,OAAgC,CAAC,GACjC,YAAY,8BACM;AAClB,QAAM,aAAa,IAAI,gBAAgB;AACvC,QAAM,QAAQ,WAAW,MAAM,WAAW,MAAM,GAAG,SAAS;AAC5D,MAAI;AACA,WAAO,MAAM,QAAQ,KAAK,EAAE,GAAG,MAAM,QAAQ,WAAW,OAAO,CAAC;AAAA,EACpE,SAAS,OAAO;AACZ,QAAK,MAAgB,SAAS,cAAc;AACxC,YAAM,IAAI,MAAM,2BAA2B,SAAS,KAAK;AAAA,IAC7D;AACA,UAAM;AAAA,EACV,UAAE;AACE,iBAAa,KAAK;AAAA,EACtB;AACJ;",
+  "names": []
+}

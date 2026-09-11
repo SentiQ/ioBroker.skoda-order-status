@@ -38,6 +38,7 @@ var import_tough_cookie = require("tough-cookie");
 var import_const = require("./const");
 var import_csrf = require("./csrf");
 var import_errors = require("./errors");
+var import_http = require("./http");
 function generateNonce() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const bytes = (0, import_node_crypto.randomBytes)(16);
@@ -102,7 +103,10 @@ class MySkodaAuth {
   refreshLock = Promise.resolve();
   constructor() {
     this.jar = new import_tough_cookie.CookieJar();
-    this.fetchFn = (0, import_fetch_cookie.default)(import_node_fetch.default, this.jar);
+    const cookieFetch = (0, import_fetch_cookie.default)(import_node_fetch.default, this.jar);
+    this.fetchFn = (input, init) => (0, import_http.fetchWithTimeout)(cookieFetch, String(input), init).catch((error) => {
+      throw error instanceof import_errors.SkodaOrderAuthError ? error : new import_errors.SkodaOrderAuthError(error.message);
+    });
   }
   getRefreshToken() {
     var _a;

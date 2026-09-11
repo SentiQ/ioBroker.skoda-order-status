@@ -1,5 +1,6 @@
 import { BASE_URL_SKODA, GARAGE_PATH, USER_AGENT } from './const';
 import { SkodaOrderApiError } from './errors';
+import { fetchWithTimeout } from './http';
 import type { MySkodaAuth } from './myskoda-auth';
 import type { OrderDetails, OrderedVehicle } from './order-mapper';
 
@@ -20,14 +21,23 @@ export class MySkodaApi {
 
     private async getJson(path: string): Promise<unknown> {
         const token = await this.auth.getAccessToken();
-        const response = await fetch(`${BASE_URL_SKODA}/api${path}`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${token}`,
-                accept: 'application/json',
-                'user-agent': USER_AGENT,
-            },
-        });
+        let response: Response;
+        try {
+            response = await fetchWithTimeout(
+                (url, init) => fetch(url, init as RequestInit),
+                `${BASE_URL_SKODA}/api${path}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                        accept: 'application/json',
+                        'user-agent': USER_AGENT,
+                    },
+                },
+            );
+        } catch (error) {
+            throw new SkodaOrderApiError(`Request to ${path} failed: ${(error as Error).message}`);
+        }
         const text = await response.text();
         if (!response.ok) {
             throw new SkodaOrderApiError(`Request to ${path} failed with status ${response.status}`);

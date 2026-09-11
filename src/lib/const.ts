@@ -12,6 +12,7 @@ export const GARAGE_PATH =
 export const DEFAULT_POLL_INTERVAL = 3600;
 export const MIN_POLL_INTERVAL = 900;
 export const MAX_POLL_INTERVAL = 86400;
+export const HTTP_TIMEOUT_MS = 30_000;
 export const MAX_TOKEN_RETRIES = 5;
 export const MAX_AUTH_REDIRECTS = 20;
 
@@ -22,10 +23,10 @@ export const USER_AGENT =
     'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36';
 
 export const STATUS_LABELS: Record<string, string> = {
-    ORDER_CONFIRMED: 'Bestätigt',
-    IN_PRODUCTION: 'In Produktion',
-    IN_DELIVERY: 'Unterwegs',
-    TO_HANDOVER: 'Zur Übergabe',
+    ORDER_CONFIRMED: 'Confirmed',
+    IN_PRODUCTION: 'In production',
+    IN_DELIVERY: 'In delivery',
+    TO_HANDOVER: 'To handover',
 };
 
 export function clampPollInterval(value: unknown): number {

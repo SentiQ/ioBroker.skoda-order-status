@@ -22,7 +22,7 @@ Manufacturer site: [Škoda Auto](https://www.skoda-auto.com/)
 
 - Login with MyŠkoda email and password
 - Automatic discovery of all open orders in the account
-- German status labels and checkpoint dates
+- English status labels and checkpoint dates
 - Configurable polling interval (default: 1 hour)
 - Refresh token stored encrypted on the instance
 
@@ -40,7 +40,7 @@ Each open order is a device under `skoda-order-status.0.<commissionId>`:
 | State | Description |
 | --- | --- |
 | `orderStatus` | Raw status (`ORDER_CONFIRMED`, `IN_PRODUCTION`, `IN_DELIVERY`, `TO_HANDOVER`) |
-| `orderStatusLabel` | German label (Bestätigt, In Produktion, Unterwegs, Zur Übergabe) |
+| `orderStatusLabel` | English label (Confirmed, In production, In delivery, To handover) |
 | `model` / `trimLevel` | Vehicle model and trim |
 | `exteriorColour` / `interiorColour` | Colours |
 | `batteryKwh` / `maxPerformanceKw` | Battery and power (if provided) |
@@ -61,6 +61,9 @@ This adapter uses an **unofficial, reverse-engineered** MyŠkoda API. It is not 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (SentiQ) HTTP timeouts, sequential polling, English state labels
+
 ### 0.1.8 (2026-09-03)
 - (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
 

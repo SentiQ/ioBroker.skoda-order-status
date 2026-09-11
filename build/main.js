@@ -42,6 +42,7 @@ const CONNECTION_NAME = {
 };
 class SkodaOrderStatus extends utils.Adapter {
   pollTimer;
+  pollIntervalSec = 3600;
   auth;
   api;
   polling = false;
@@ -81,17 +82,16 @@ class SkodaOrderStatus extends utils.Adapter {
       await this.setConnection(false);
       return;
     }
+    this.pollIntervalSec = pollInterval;
     await this.poll();
-    this.pollTimer = this.setInterval(() => {
-      void this.poll();
-    }, pollInterval * 1e3);
+    this.scheduleNextPoll();
     this.log.info(`Polling order status every ${pollInterval} seconds`);
   }
   onUnload(callback) {
     this.unloaded = true;
     try {
       if (this.pollTimer) {
-        this.clearInterval(this.pollTimer);
+        this.clearTimeout(this.pollTimer);
         this.pollTimer = void 0;
       }
     } catch (error) {
@@ -117,6 +117,15 @@ class SkodaOrderStatus extends utils.Adapter {
     await this.auth.authorize(username, password);
     this.log.info("Authenticated with MySkoda username and password");
     await this.persistRefreshToken();
+  }
+  scheduleNextPoll() {
+    if (this.unloaded) {
+      return;
+    }
+    this.pollTimer = this.setTimeout(() => {
+      this.pollTimer = void 0;
+      void this.poll().finally(() => this.scheduleNextPoll());
+    }, this.pollIntervalSec * 1e3);
   }
   async poll() {
     if (this.unloaded || this.polling || !this.api || !this.auth) {

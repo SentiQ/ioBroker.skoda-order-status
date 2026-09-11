@@ -23,6 +23,7 @@ __export(const_exports, {
   CLIENT_ID: () => CLIENT_ID,
   DEFAULT_POLL_INTERVAL: () => DEFAULT_POLL_INTERVAL,
   GARAGE_PATH: () => GARAGE_PATH,
+  HTTP_TIMEOUT_MS: () => HTTP_TIMEOUT_MS,
   MAX_AUTH_REDIRECTS: () => MAX_AUTH_REDIRECTS,
   MAX_POLL_INTERVAL: () => MAX_POLL_INTERVAL,
   MAX_TOKEN_RETRIES: () => MAX_TOKEN_RETRIES,
@@ -42,15 +43,16 @@ const GARAGE_PATH = "/v2/garage?connectivityGenerations=MOD1&connectivityGenerat
 const DEFAULT_POLL_INTERVAL = 3600;
 const MIN_POLL_INTERVAL = 900;
 const MAX_POLL_INTERVAL = 86400;
+const HTTP_TIMEOUT_MS = 3e4;
 const MAX_TOKEN_RETRIES = 5;
 const MAX_AUTH_REDIRECTS = 20;
 const OIDC_SCOPE = "address badge birthdate cars driversLicense dealers email mileage mbb nationalIdentifier openid phone profession profile vin";
 const USER_AGENT = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36";
 const STATUS_LABELS = {
-  ORDER_CONFIRMED: "Best\xE4tigt",
-  IN_PRODUCTION: "In Produktion",
-  IN_DELIVERY: "Unterwegs",
-  TO_HANDOVER: "Zur \xDCbergabe"
+  ORDER_CONFIRMED: "Confirmed",
+  IN_PRODUCTION: "In production",
+  IN_DELIVERY: "In delivery",
+  TO_HANDOVER: "To handover"
 };
 function clampPollInterval(value) {
   const n = Number(value);
@@ -66,6 +68,7 @@ function clampPollInterval(value) {
   CLIENT_ID,
   DEFAULT_POLL_INTERVAL,
   GARAGE_PATH,
+  HTTP_TIMEOUT_MS,
   MAX_AUTH_REDIRECTS,
   MAX_POLL_INTERVAL,
   MAX_TOKEN_RETRIES,
